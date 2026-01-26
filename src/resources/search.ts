@@ -6,7 +6,7 @@ import { buildHeaders } from '../internal/headers';
 import { RequestOptions } from '../internal/request-options';
 
 export class Search extends APIResource {
-  create(options?: RequestOptions): APIPromise<void> {
+  query(options?: RequestOptions): APIPromise<void> {
     return this._client.post('/v1/search', {
       ...options,
       headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),

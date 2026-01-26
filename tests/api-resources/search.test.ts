@@ -9,8 +9,8 @@ const client = new Rayrift({
 
 describe('resource search', () => {
   // Prism tests are disabled
-  test.skip('create', async () => {
-    const responsePromise = client.search.create();
+  test.skip('query', async () => {
+    const responsePromise = client.search.query();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;

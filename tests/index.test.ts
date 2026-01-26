@@ -322,13 +322,30 @@ describe('instantiate client', () => {
     test('empty env variable', () => {
       process.env['RAYRIFT_BASE_URL'] = ''; // empty
       const client = new Rayrift({ apiKey: 'My API Key' });
-      expect(client.baseURL).toEqual('http://localhost:3000');
+      expect(client.baseURL).toEqual('https://api.rayrift.com');
     });
 
     test('blank env variable', () => {
       process.env['RAYRIFT_BASE_URL'] = '  '; // blank
       const client = new Rayrift({ apiKey: 'My API Key' });
-      expect(client.baseURL).toEqual('http://localhost:3000');
+      expect(client.baseURL).toEqual('https://api.rayrift.com');
+    });
+
+    test('env variable with environment', () => {
+      process.env['RAYRIFT_BASE_URL'] = 'https://example.com/from_env';
+
+      expect(
+        () => new Rayrift({ apiKey: 'My API Key', environment: 'production' }),
+      ).toThrowErrorMatchingInlineSnapshot(
+        `"Ambiguous URL; The \`baseURL\` option (or RAYRIFT_BASE_URL env var) and the \`environment\` option are given. If you want to use the environment you must pass baseURL: null"`,
+      );
+
+      const client = new Rayrift({
+        apiKey: 'My API Key',
+        baseURL: null,
+        environment: 'production',
+      });
+      expect(client.baseURL).toEqual('https://api.rayrift.com');
     });
 
     test('in request options', () => {
