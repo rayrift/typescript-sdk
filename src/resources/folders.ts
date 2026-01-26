@@ -7,22 +7,15 @@ import { RequestOptions } from '../internal/request-options';
 import { path } from '../internal/utils/path';
 
 export class Folders extends APIResource {
-  create(options?: RequestOptions): APIPromise<void> {
+  createFolder(options?: RequestOptions): APIPromise<void> {
     return this._client.post('/v1/folders', {
       ...options,
       headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
     });
   }
 
-  retrieve(id: string, options?: RequestOptions): APIPromise<void> {
-    return this._client.get(path`/v1/folders/${id}`, {
-      ...options,
-      headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
-    });
-  }
-
-  update(id: string, options?: RequestOptions): APIPromise<void> {
-    return this._client.patch(path`/v1/folders/${id}`, {
+  deleteFolder(id: string, options?: RequestOptions): APIPromise<void> {
+    return this._client.delete(path`/v1/folders/${id}`, {
       ...options,
       headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
     });
@@ -30,6 +23,27 @@ export class Folders extends APIResource {
 
   listDocuments(id: string, options?: RequestOptions): APIPromise<void> {
     return this._client.get(path`/v1/folders/${id}/documents`, {
+      ...options,
+      headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
+    });
+  }
+
+  listFolders(options?: RequestOptions): APIPromise<void> {
+    return this._client.get('/v1/folders', {
+      ...options,
+      headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
+    });
+  }
+
+  retrieveFolder(id: string, options?: RequestOptions): APIPromise<void> {
+    return this._client.get(path`/v1/folders/${id}`, {
+      ...options,
+      headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
+    });
+  }
+
+  updateFolder(id: string, options?: RequestOptions): APIPromise<void> {
+    return this._client.patch(path`/v1/folders/${id}`, {
       ...options,
       headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
     });

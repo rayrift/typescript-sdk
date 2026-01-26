@@ -1,4 +1,4 @@
-configured_endpoints: 7
-openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/rayrift%2Frayrift-cefae6ee84e1d2368a47cc95c852ce5d6d621769bde2ca52e83252e81f6fa94b.yml
-openapi_spec_hash: 8ef3eade907a61343f5115295cccb855
-config_hash: 7efbbea28cf2bc9de765193a8d5233b4
+configured_endpoints: 11
+openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/rayrift%2Frayrift-7b3c2a71c084ffe8ffe7ca308e8b6498d9f394e0f7d1393b02c6332322b6b931.yml
+openapi_spec_hash: 4e7394902d94b1986e3a965b1740daf9
+config_hash: c65704e5fb7a2a11a130b73ac9484bd7

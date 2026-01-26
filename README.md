@@ -4,7 +4,7 @@
 
 This library provides convenient access to the Rayrift REST API from server-side TypeScript or JavaScript.
 
-The full API of this library can be found in [api.md](api.md).
+The REST API documentation can be found on [docs.rayrift.com](https://docs.rayrift.com). The full API of this library can be found in [api.md](api.md).
 
 It is generated with [Stainless](https://www.stainless.com/).
 
@@ -27,9 +27,10 @@ import Rayrift from 'rayrift';
 
 const client = new Rayrift({
   apiKey: process.env['RAYRIFT_API_KEY'], // This is the default and can be omitted
+  environment: 'local', // defaults to 'production'
 });
 
-await client.documents.create();
+await client.search.query();
 ```
 
 ### Request & Response types
@@ -42,9 +43,10 @@ import Rayrift from 'rayrift';
 
 const client = new Rayrift({
   apiKey: process.env['RAYRIFT_API_KEY'], // This is the default and can be omitted
+  environment: 'local', // defaults to 'production'
 });
 
-await client.documents.create();
+await client.search.query();
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -57,7 +59,7 @@ a subclass of `APIError` will be thrown:
 
 <!-- prettier-ignore -->
 ```ts
-const response = await client.documents.create().catch(async (err) => {
+const response = await client.search.query().catch(async (err) => {
   if (err instanceof Rayrift.APIError) {
     console.log(err.status); // 400
     console.log(err.name); // BadRequestError
@@ -97,7 +99,7 @@ const client = new Rayrift({
 });
 
 // Or, configure per-request:
-await client.documents.create({
+await client.search.query({
   maxRetries: 5,
 });
 ```
@@ -114,7 +116,7 @@ const client = new Rayrift({
 });
 
 // Override per-request:
-await client.documents.create({
+await client.search.query({
   timeout: 5 * 1000,
 });
 ```
@@ -137,11 +139,11 @@ Unlike `.asResponse()` this method consumes the body, returning once it is parse
 ```ts
 const client = new Rayrift();
 
-const response = await client.documents.create().asResponse();
+const response = await client.search.query().asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: result, response: raw } = await client.documents.create().withResponse();
+const { data: result, response: raw } = await client.search.query().withResponse();
 console.log(raw.headers.get('X-My-Header'));
 console.log(result);
 ```
@@ -223,7 +225,7 @@ parameter. This library doesn't validate at runtime that the request matches the
 send will be sent as-is.
 
 ```ts
-client.documents.create({
+client.search.query({
   // ...
   // @ts-expect-error baz is not yet public
   baz: 'undocumented option',
