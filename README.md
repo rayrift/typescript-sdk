@@ -4,9 +4,8 @@
 
 This library provides convenient access to the Rayrift REST API from server-side TypeScript or JavaScript.
 
-The REST API documentation can be found on [docs.rayrift.com](https://docs.rayrift.com). The full API of this library can be found in [api.md](api.md).
+This documentation covers the full Rayrift SDK — including setup, usage, configuration, known limitations, errors, and troubleshooting. The REST API documentation can be found on [docs.rayrift.com](https://docs.rayrift.com/sdk). The full API of this library can be found in [api.md](api.md).
 
-It is generated with [Stainless](https://www.stainless.com/).
 
 ## Installation
 
