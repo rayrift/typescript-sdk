@@ -8,7 +8,7 @@ const client = new Rayrift({
 });
 
 describe('resource search', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('query', async () => {
     const responsePromise = client.search.query();
     const rawResponse = await responsePromise.asResponse();
