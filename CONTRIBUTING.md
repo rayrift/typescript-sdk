@@ -60,7 +60,7 @@ $ yarn link rayrift
 # With pnpm
 $ pnpm link --global
 $ cd ../my-package
-$ pnpm link -—global rayrift
+$ pnpm link --global rayrift
 ```
 
 ## Running tests
